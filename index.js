@@ -16,14 +16,16 @@ fs.open('./public/index.html','r',function(err,file){
 			fs.read(file,buffer,bytesRead,chunkSize,bytesRead);
 			bytesRead += chunkSize;
 		}
-
-//		fs.close(file);
-	
-	});	
-});
-
-		http.createServer(function(request,response){
+			http.createServer(function(request,response){
 			response.writeHead(200,{'Content-type':'text/html'});
-			response.write(file);
+			response.write(buffer);
 			response.end();
 		}).listen(8080);
+
+	
+	});	
+
+
+});
+
+
